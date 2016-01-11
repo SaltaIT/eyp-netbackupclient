@@ -16,6 +16,8 @@
 ## Overview
 Control of <i>/usr/openv/netbackup/include_list</i> and <i>/usr/openv/netbackup/exclude_list</i> files.
 
+This documentation has reviewed up to version 0.1.15.
+
 ## Module Description
 This module fully manages the next files so this will overwrite your
 existing files.
