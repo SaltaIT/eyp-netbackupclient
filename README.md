@@ -38,10 +38,9 @@ existing files.
 Simple example:
 ```puppet
 class { 'netbackupclient':
-  includelist => [ '/var/log', '/etc', '/var/spool/cron' ],
+  includelist => [ '/var/', '/etc', '/var/spool/cron' ],
 }
 
-netbackupclient::excludelist { '/var/log': }
 netbackupclient::excludelist { '/var/log': }
 ```
 
