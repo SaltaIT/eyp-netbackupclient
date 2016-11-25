@@ -1,10 +1,35 @@
 class netbackupclient (
-                        $includelist = [ '/var/log', '/etc', '/var/spool/cron' ],
-                        $excludelist = [ '/', '/dev', '/sys', '/proc' ],
+                        $includelist    = [ '/var/log', '/etc', '/var/spool/cron' ],
+                        $excludelist    = [ '/', '/dev', '/sys', '/proc' ],
+                        $package_ensure = undef,
                       ) inherits netbackupclient::params {
 
   validate_array($includelist)
   validate_array($excludelist)
+
+  validate_re($package_ensure, [ '^present$', '^installed$', '^absent$', '^purged$', '^held$', '^latest$' ], 'Not a supported package_ensure: present/absent/purged/held/latest')
+
+  Exec {
+    path => '/bin:/sbin:/usr/bin:/usr/sbin',
+  }
+
+  if($package_ensure!=undef)
+  {
+    case $package_ensure
+    {
+      'absent':
+      {
+        exec { 'eyp-netbackup rpm -e':
+          command => 'rpm -e netbackup',
+          onlyif  => 'rpm -qi netbackup',
+        }
+      }
+      default:
+      {
+        fail("package_ensure ${package_ensure} - currently unimplemented")
+      }
+    }
+  }
 
   if ($::eyp_netbackupclient_version)
   {
