@@ -7,14 +7,14 @@ class netbackupclient (
   validate_array($includelist)
   validate_array($excludelist)
 
-  validate_re($package_ensure, [ '^present$', '^installed$', '^absent$', '^purged$', '^held$', '^latest$' ], 'Not a supported package_ensure: present/absent/purged/held/latest')
-
   Exec {
     path => '/bin:/sbin:/usr/bin:/usr/sbin',
   }
 
   if($package_ensure!=undef)
   {
+    validate_re($package_ensure, [ '^present$', '^installed$', '^absent$', '^purged$', '^held$', '^latest$' ], 'Not a supported package_ensure: present/absent/purged/held/latest')
+    
     case $package_ensure
     {
       'absent':
