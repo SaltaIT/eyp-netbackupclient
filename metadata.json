@@ -1,6 +1,6 @@
 {
   "name": "eyp-netbackupclient",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "author": "eyp",
   "summary": "manages include/excude_list",
   "license": "Apache-2.0",

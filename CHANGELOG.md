@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.18
+
+* changed **package_ensure** default to **present**
+
 ## 0.1.17
 
 * bugfix

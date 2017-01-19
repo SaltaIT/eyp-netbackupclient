@@ -1,7 +1,7 @@
 class netbackupclient (
                         $includelist    = [ '/var/log', '/etc', '/var/spool/cron' ],
                         $excludelist    = [ '/', '/dev', '/sys', '/proc' ],
-                        $package_ensure = undef,
+                        $package_ensure = 'present',
                       ) inherits netbackupclient::params {
 
   validate_array($includelist)
@@ -14,7 +14,7 @@ class netbackupclient (
   if($package_ensure!=undef)
   {
     validate_re($package_ensure, [ '^present$', '^installed$', '^absent$', '^purged$', '^held$', '^latest$' ], 'Not a supported package_ensure: present/absent/purged/held/latest')
-    
+
     case $package_ensure
     {
       'absent':
@@ -23,6 +23,12 @@ class netbackupclient (
           command => 'rpm -e netbackup',
           onlyif  => 'rpm -qi netbackup',
         }
+
+        $nb_config_ensure='present'
+      }
+      'present':
+      {
+        $nb_config_ensure='present'
       }
       default:
       {
@@ -34,7 +40,7 @@ class netbackupclient (
   if ($::eyp_netbackupclient_version)
   {
     concat { '/usr/openv/netbackup/include_list':
-      ensure => 'present',
+      ensure => $nb_config_ensure,
       owner  => 'root',
       group  => 'root',
       mode   => '0644',
@@ -47,7 +53,7 @@ class netbackupclient (
     }
 
     concat { '/usr/openv/netbackup/exclude_list':
-      ensure => 'present',
+      ensure => $nb_config_ensure,
       owner  => 'root',
       group  => 'root',
       mode   => '0644',
