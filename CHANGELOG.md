@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.19
+
+* metadata lint
+
 ## 0.1.18
 
 * changed **package_ensure** default to **present**
