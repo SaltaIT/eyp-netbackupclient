@@ -1,6 +1,6 @@
 {
   "name": "eyp-netbackupclient",
-  "version": "0.1.19",
+  "version": "1.0.19",
   "author": "Jordi Prats",
   "summary": "manages include/excude_list",
   "license": "Apache-2.0",
