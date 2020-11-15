@@ -1,12 +1,12 @@
 {
   "name": "eyp-netbackupclient",
-  "version": "0.1.19",
-  "author": "eyp",
+  "version": "1.0.19",
+  "author": "Jordi Prats",
   "summary": "manages include/excude_list",
   "license": "Apache-2.0",
-  "source": "https://github.com/NTTCom-MS/eyp-netbackupclient",
-  "project_page": "https://github.com/NTTCom-MS/eyp-netbackupclient",
-  "issues_url": "https://github.com/NTTCom-MS/eyp-netbackupclient/issues",
+  "source": "https://github.com/SaltaIT/eyp-netbackupclient",
+  "project_page": "https://github.com/SaltaIT/eyp-netbackupclient",
+  "issues_url": "https://github.com/SaltaIT/eyp-netbackupclient/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"},
     {"name":"puppetlabs/concat","version_requirement":">= 1.2.3"}
